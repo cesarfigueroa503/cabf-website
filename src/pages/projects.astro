@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import TextBlock from '../components/TextBlock.astro';
+
+// Interfaz para los proyectos
+interface Project {
+  slug: string;
+  data: {
+    description: string;
+    title: string;
+    icon: string;
+    imageUrl: string;
+    categories: string[];  // Cada proyecto tiene una lista de categorías
+  };
+}
+
+const projects: Project[] = await getCollection('projects');
+
+// Crear un conjunto para los proyectos únicos
+const uniqueProjects = new Set<string>();
+const displayedProjects: Project[] = [];
+
+// Agregar proyectos únicos
+projects.forEach((project) => {
+  if (!uniqueProjects.has(project.slug)) {
+    uniqueProjects.add(project.slug);
+    displayedProjects.push(project);
+  }
+});
+---
+
+<Layout title="Proyectos Cesar Banegas">
+  <section class="projects-list">
+    <TextBlock
+      title="Mis Proyectos"
+      alignment="center"
+    />
+    
+    <!-- Mostrar los proyectos únicos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {displayedProjects.map((project) => (
+        <div class="project-card">
+          <Card
+            title={`${project.data.title} ${project.data.icon}`}
+            description={project.data.description}
+            imageUrl={`/img/${project.data.imageUrl}`}
+            link={`/projects/${project.slug}`}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+  

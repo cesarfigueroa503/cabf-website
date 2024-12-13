@@ -1,0 +1,80 @@
+/* Animaciones para la transición de páginas */
+
+/* Animación de entrada */
+@keyframes fadeIn {
+	from {
+	  opacity: 0;
+	  transform: translateY(20px);
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  
+  /* Animación de salida */
+  @keyframes fadeOut {
+	from {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+	to {
+	  opacity: 0;
+	  transform: translateY(-20px);
+	}
+  }
+  
+  /* Clase para aplicar a los elementos que queremos animar */
+  .page-transition {
+	animation-duration: 0.5s;
+	animation-fill-mode: both;
+  }
+  
+  /* Clase para la animación de entrada */
+  .page-enter {
+	animation-name: fadeIn;
+  }
+  
+  /* Clase para la animación de salida */
+  .page-exit {
+	animation-name: fadeOut;
+  }
+  
+  /* Animación para enlaces */
+  .link-hover {
+	transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .link-hover:hover {
+	color: #646cff; /* Cambia este color según tu esquema */
+	transform: translateY(-2px);
+  }
+  
+  /* Animación para imágenes */
+  .image-hover {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .image-hover:hover {
+	transform: scale(1.05);
+	box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  /* Animación para botones */
+  .button-hover {
+	transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .button-hover:hover {
+	background-color: #4a4fb7; /* Cambia este color según tu esquema */
+	transform: translateY(-2px);
+  }
+  
+  /* Animación para el contenedor principal */
+  .main-content {
+	transition: opacity 0.5s ease;
+  }
+  
+  .main-content.loading {
+	opacity: 0.7;
+  }

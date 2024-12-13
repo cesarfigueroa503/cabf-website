@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProfileImage from '../components/ProfileImage.astro';
+import TextBlock from '../components/TextBlock.astro';
+---
+
+<Layout title="Sobre mí">
+  <main>
+    <!-- Sección de perfil -->
+    <section class="mt-16">
+      
+      <div>
+        
+        </p>
+        <TextBlock
+          title="Cesar Banegas"
+          subtitle= "⚙️ Desarrollador Backend en proceso 💻"
+          content="Desarrollador backend apasionado por crear soluciones eficientes. Me enfoco en el análisis de datos, la creación de microservicios y el manejo de bases de datos. Busco optimizar procesos empresariales mediante la automatización, uno de mis objetivos es contribuir al crecimiento de pequeñas y medianas empresas de mi pais."
+          alignment="center"
+          titleSize="large"
+          imageUrl='/img/profile-me(edit).webp'
+
+        />
+      </div>
+    </section>
+
+    <!-- Sección de descripción -->
+    <section class="mt-16">
+      <TextBlock
+        title="Sobre mi trabajo"
+        content="Me dedico a la creación de soluciones backend utilizando tecnologías como Python, Java y bases de datos relacionales. Mi enfoque está en la mejora continua y el desarrollo de software eficiente para resolver problemas empresariales."
+        alignment="center"
+        titleSize="large"
+      />
+    </section>
+  </main>
+</Layout>

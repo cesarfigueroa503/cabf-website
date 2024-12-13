@@ -1,0 +1,12 @@
+---
+interface Props {
+  src: string; // Ruta de la imagen del logotipo
+  alt: string; // Texto alternativo para la imagen
+}
+
+const { src, alt } = Astro.props;
+---
+
+<a href="/" class="relative flex aling-left top-0 left-0">
+  <img src={src} alt={alt} class="h-10 w-auto" />
+</a>

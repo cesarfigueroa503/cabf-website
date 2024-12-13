@@ -1,0 +1,49 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width?: string;  // Optional width
+  height?: string; // Optional height
+  positionX?: 'left' | 'center' | 'right';  // Horizontal alignment
+  positionY?: 'top' | 'center' | 'bottom';  // Vertical alignment
+  shape?: 'circle' | 'square' | 'rounded';  // Shape of the image
+}
+
+const {
+  src,
+  alt,
+  width = '16%',  // Default to 16% of the screen width
+  height = 'auto',  // Height is automatic, constrained by max-height
+  positionX = 'center',  // Default horizontal position
+  positionY = 'center',  // Default vertical position
+  shape = 'rounded',  // Default shape is rounded
+} = Astro.props;
+
+const shapeClasses = {
+  circle: 'rounded-full',
+  square: '',
+  rounded: 'rounded-lg',
+};
+
+const positionXClasses = {
+  left: 'justify-start',
+  center: 'justify-center',
+  right: 'justify-end',
+};
+
+const positionYClasses = {
+  top: 'items-start',
+  center: 'items-center',
+  bottom: 'items-end',
+};
+---
+
+<div class={`flex ${positionYClasses[positionY]} ${positionXClasses[positionX]} w-full h-full`}>
+  <img
+    src={src}
+    alt={alt}
+    class={`object-contain ${shapeClasses[shape]}`}
+    style={`max-width: ${width}; max-height: 30vh;`}
+    loading="lazy"
+  />
+</div>

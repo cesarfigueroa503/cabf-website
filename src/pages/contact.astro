@@ -1,0 +1,98 @@
+---
+// ContactForm.astro
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact | Cesar Banegas">
+  <section class="contact-section">
+    <h1 class="text-gradient">Contáctame</h1>
+    <p class="intro-text">Estoy entusiasmado por la oportunidad de trabajar contigo, aportar mi ingenio y esfuerzo a tus proyectos. Siéntete libre de dejarme un mensaje, ¡agradezco la posibilidad de contribuir con tu equipo!</p>
+    
+    <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" placeholder="Escribe tu mensaje" required></textarea>
+      </div>
+      
+      <button type="submit" class="submit-button">Enviar</button>
+    </form>
+  </section>
+</Layout>
+
+<style>
+  .contact-section {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: auto;
+    color: white;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .intro-text {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #cccccc;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #999;
+  }
+
+  input, textarea {
+    padding: 0.75rem;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #888;
+  }
+
+  .submit-button {
+    padding: 0.75rem;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+</style>

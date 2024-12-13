@@ -1,16 +1,68 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+import TextBlock from '../components/TextBlock.astro';
+import Card from '../components/Card.astro';
+
+import Project from './projects/[project].astro';
+import { getCollection } from 'astro:content';
+
+interface Project {
+  slug: string;
+  data: {
+    description: string;
+    title: string;
+    icon: string;
+    imageUrl: string; 
+  };
+}
+
+const projects: Project[] = await getCollection('projects');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Portafolio de Cesar Banegas">
+
+	<main class="bg-fixed bg-cover bg-center">
+		<div > <!-- Oscurece la imagen de fondo con unn overlay -->
+			<h1 class="text-5xl font-bold text-stone-50 mb-8 text-center ">Bienvenido a Mi Portafolio</h1>
+			<p class="text-lg text-gray-300 mb-8 text-center ml-10 mr-10">
+				Soy desarrollador backend apasionado por crear soluciones eficientes. Aquí puedes encontrar mis habilidades, proyectos y aficiones.
+			</p>
+
+			<TextBlock
+			  title="Trayectoria 🚀"
+			  content="Estudiante en el último año de Ingeniería en Sistemas🎓 en la UNAH 🏢, con experiencia en Python, Java, TypeScript, y frameworks como Django y Spring. He completado cursos en e-commerce 🛒 y comunicación empresarial 📧."
+			  alignment="left"
+			  titleSize="medium"
+			  imageUrl='img/init001.jpg'
+			  imagePosition='right'
+			/>
+			
+			<TextBlock
+			  title="Objetivos 🎯"
+			  content="A corto plazo, quiero mejorar mis habilidades en computación en la nube y patrones de diseño. A largo plazo, aspiro a ser un desarrollador full-stack y colaborar con grandes empresas tecnológicas."
+			  alignment="center"
+			  titleSize="medium"
+			  imageUrl='img/init002.jpg'
+			  imagePosition='left'
+			  
+			/>
+
+			<TextBlock
+			  title="Pasiones y Entusiasmos 🎨"
+			  content="Me apasiona el desarrollo de aplicaciones web y la extracción de datos para entrenar modelos de predicción. Estoy entusiasmado por la posibilidad de crear soluciones innovadoras que resuelvan problemas reales y mejoren la vida de las personas."
+			  alignment="center"
+			  titleSize="medium"
+			  imageUrl='img/init003.jpg'
+			  imagePosition='right'
+			/>
+			<br>
+			<h2 class="text-4xl font-bold text-white mb-8 text-center">
+				Tecnologías</h2>
+			
+
+			
+		</div>
+	</main>
+
+</Layout>

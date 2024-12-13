@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  content?: string;
+  subtitle?: string; // Subtítulo opcional
+  alignment?: 'left' | 'center' | 'right';
+  titleSize?: 'small' | 'medium' | 'large';
+  backgroundColor?: string; // Nuevo prop para el fondo de color
+  imageUrl?: string; // Nueva propiedad para la URL de la imagen
+  imagePosition?: 'left' | 'right'; // Posición de la imagen
+}
+
+const { 
+  title, 
+  content, 
+  subtitle = '', // Valor predeterminado vacío
+  alignment = 'left', 
+  titleSize = 'medium',
+  backgroundColor = '', // Valor predeterminado vacío para el fondo
+  imageUrl = '', // Valor predeterminado vacío para la imagen
+  imagePosition = 'left', // Posición predeterminada de la imagen
+} = Astro.props;
+
+const alignmentClasses = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+};
+
+const titleSizeClasses = {
+  small: 'text-xl',
+  medium: 'text-2xl',
+  large: 'text-3xl',
+};
+
+// Clases para posicionar la imagen (izquierda o derecha)
+const imageAlignmentClasses = {
+  left: 'flex-row',  // Imagen a la izquierda
+  right: 'flex-row-reverse', // Imagen a la derecha
+};
+---
+
+<div class={`max-w-4xl mx-auto px-4 py-8 ${alignmentClasses[alignment]} ${backgroundColor ? backgroundColor : ''}`}>
+  <div class={`flex ${imageAlignmentClasses[imagePosition]} gap-4 items-center`}>
+    {imageUrl && (
+      <img src={imageUrl} alt={title} class="w-1/3 object-cover rounded-lg" />
+    )}
+    
+    <div class="flex-1">
+      <h2 class={`font-bold mb-2 ${titleSizeClasses[titleSize]}`}>{title}</h2>
+      
+      {subtitle && (
+        <h3 class="text-lg text-gray-600 dark:text-gray-400 mb-4">{subtitle}</h3> // Subtítulo opcional
+      )}
+
+      <p class="text-gray-700 dark:text-gray-300">{content}</p>
+    </div>
+  </div>
+</div>
