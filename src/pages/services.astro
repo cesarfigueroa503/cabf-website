@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TextBlock from '../components/TextBlock.astro';
+---
+
+<Layout title="Servicios">
+  <main>
+    <!-- Sección de introducción -->
+    <section class="mt-16">
+      <TextBlock
+        title="Mis Servicios"
+        subtitle="Soluciones tecnológicas para tu negocio"
+        content="Ofrezco servicios profesionales de desarrollo y consultoría en tecnología, enfocados en crear soluciones efectivas y escalables para tu empresa."
+        alignment="center"
+        titleSize="large"
+      />
+    </section>
+
+    <!-- Lista de servicios -->
+    <section class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+      <div class="bg-slate-800 p-6 rounded-lg">
+        <h3 class="text-xl font-bold mb-3">💻 Desarrollo Backend</h3>
+        <p>Desarrollo de APIs, microservicios y sistemas robustos utilizando Python, Java y Node.js. Implementación de lógica de negocio y optimización de rendimiento.</p>
+      </div>
+
+      <div class="bg-slate-800 p-6 rounded-lg">
+        <h3 class="text-xl font-bold mb-3">🎨 Desarrollo Frontend</h3>
+        <p>Creación de interfaces de usuario modernas y responsivas utilizando React, Angular o Vue.js, con enfoque en la experiencia del usuario.</p>
+      </div>
+
+      <div class="bg-slate-800 p-6 rounded-lg">
+        <h3 class="text-xl font-bold mb-3">🗄️ Administración de Bases de Datos</h3>
+        <p>Diseño, implementación y optimización de bases de datos SQL y NoSQL. Gestión de datos, respaldos y seguridad de la información.</p>
+      </div>
+
+      <div class="bg-slate-800 p-6 rounded-lg">
+        <h3 class="text-xl font-bold mb-3">📱 Diseño de Aplicaciones</h3>
+        <p>Desarrollo de aplicaciones web y móviles adaptadas a tus necesidades específicas, con énfasis en la usabilidad y el rendimiento.</p>
+      </div>
+
+      <div class="bg-slate-800 p-6 rounded-lg">
+        <h3 class="text-xl font-bold mb-3">🤝 Consultoría Tecnológica</h3>
+        <p>Asesoramiento en arquitectura de software, mejores prácticas de desarrollo y soluciones tecnológicas para optimizar tus procesos de negocio.</p>
+      </div>
+
+      <div class="bg-slate-800 p-6 rounded-lg">
+        <h3 class="text-xl font-bold mb-3">🔄 Colaboración en Proyectos</h3>
+        <p>Integración en equipos de desarrollo existentes, aportando experiencia técnica y metodologías ágiles para alcanzar los objetivos del proyecto.</p>
+      </div>
+    </section>
+
+    <!-- Sección de contacto -->
+    <section class="mt-16 mb-16">
+      <TextBlock
+        title="¿Listo para empezar?"
+        content="Contáctame para discutir cómo puedo ayudarte a llevar tu proyecto al siguiente nivel."
+        alignment="center"
+        titleSize="medium"
+      />
+    </section>
+  </main>
+</Layout>
