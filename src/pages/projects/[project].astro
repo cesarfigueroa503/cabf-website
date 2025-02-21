@@ -17,11 +17,16 @@ const { project } = Astro.params;
 const projects = await getCollection('projects');
 const currentProject = projects.find((p) => p.slug === project);
 
-// Renderizar el contenido del archivo Markdown
+// Agregar redirección o manejo de error si el proyecto no existe
+if (!currentProject) {
+  return Astro.redirect('/404');
+}
+
+// Solo realizar el render si tenemos un proyecto válido
 const { Content } = await currentProject.render();
 ---
 
-<Layout title="Proyectos Cesar Banegas">
+<Layout title={`Proyecto: ${currentProject.data.title || 'Sin título'}`}>
     <body class="dark"> <!-- Aplica modo oscuro a toda la página -->
   
       <article class="prose lg:prose-lg max-w-none dark:prose"> <!-- Se agrega la clase "dark:prose" -->
@@ -87,4 +92,4 @@ const { Content } = await currentProject.render();
       @apply max-w-4xl h-auto mb-4 rounded-lg shadow-md; /* Ajustes para que las imágenes sean responsivas, con margen, esquinas redondeadas y sombra */
     }
   </style>
-  
+
