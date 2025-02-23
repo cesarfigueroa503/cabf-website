@@ -27,69 +27,107 @@ const { Content } = await currentProject.render();
 ---
 
 <Layout title={`Proyecto: ${currentProject.data.title || 'Sin título'}`}>
-    <body class="dark"> <!-- Aplica modo oscuro a toda la página -->
-  
-      <article class="prose lg:prose-lg max-w-none dark:prose"> <!-- Se agrega la clase "dark:prose" -->
-          <!-- Aquí se renderiza el contenido del archivo Markdown -->
-          <Content />
-      </article>
-      
-    </body>
+  <div class="container mx-auto px-4 py-8">
+    <article class="prose lg:prose-lg max-w-none dark:prose">
+      <Content />
+    </article>
+  </div>
 </Layout>
 
-
 <style is:global>
-    .prose h1 { 
-      @apply text-3xl font-bold text-gray-300 mb-4 mt-8; /* Ajuste a un tono más claro */
-    }
-    .prose h2 { 
-      @apply text-2xl font-semibold text-gray-400 mb-4 mt-8; /* Más claro para resaltar en dark mode */
-    }
-    .prose h3 { 
-      @apply text-xl font-semibold text-gray-500 mb-3 mt-6; 
-    }
-    .prose p { 
-      @apply mb-4 text-gray-300; /* Texto principal más claro en modo oscuro */
-    }
-    .prose ul { 
-      @apply list-disc list-inside mb-4; 
-    }
-    .prose ol { 
-      @apply list-decimal list-inside mb-4; 
-    }
-    .prose li { 
-      @apply mb-2 text-gray-300; /* Asegura que los elementos de la lista sean claros también */
-    }
-    .prose strong { 
-      @apply text-gray-400; /* Texto en negrita con color más claro */
-    }
-    .prose a { 
-      @apply text-gray-300 hover:text-gray-500 underline; /* Enlaces con buen contraste en dark mode */
-    }
-    .prose code { 
-      @apply bg-gray-800 text-gray-200 px-1 py-0.5 rounded; /* Fondo más oscuro para el código */
-    }
-    .prose pre { 
-      @apply bg-gray-800 p-4 rounded-lg overflow-x-auto; /* Fondo oscuro para los bloques de código */
-    }
-    .prose pre code { 
-      @apply bg-transparent text-gray-200; /* Código dentro de bloques `pre` legible en modo oscuro */
-    }
-    .prose blockquote { 
-      @apply border-l-4 border-gray-600 pl-4 italic text-gray-400; /* Citas con borde claro */
-    }
-    .prose table { 
-      @apply w-full border-collapse border border-gray-700 mb-4; /* Bordes suaves para tablas */
-    }
-    .prose th, .prose td { 
-      @apply border border-gray-700 p-2; /* Bordes suaves para las celdas */
-    }
-    .prose th { 
-      @apply bg-gray-700 font-semibold text-gray-300; /* Cabeceras de tabla con fondo y texto contrastante */
-    }
+  /* Estilos base */
+  .prose {
+    @apply mx-auto max-w-4xl;
+  }
 
-    .prose img {
-      @apply max-w-4xl h-auto mb-4 rounded-lg shadow-md; /* Ajustes para que las imágenes sean responsivas, con margen, esquinas redondeadas y sombra */
+  /* Títulos */
+  .prose h1 { 
+    @apply text-4xl md:text-5xl font-bold text-gray-300 mb-6 mt-8 text-center; 
+  }
+
+  .prose h2 { 
+    @apply text-2xl md:text-3xl font-semibold text-gray-400 mb-4 mt-8; 
+  }
+
+  .prose h3 { 
+    @apply text-xl md:text-2xl font-semibold text-gray-500 mb-3 mt-6; 
+  }
+
+  /* Texto y contenido */
+  .prose p { 
+    @apply mb-6 text-gray-300 text-base md:text-lg leading-relaxed; 
+  }
+
+  /* Imágenes */
+  .prose img {
+    @apply w-full md:w-4/5 lg:w-3/4 mx-auto rounded-xl shadow-lg 
+           transition-transform duration-300 hover:scale-105
+           my-8 object-cover;
+    max-height: 80vh;
+  }
+
+  /* Enlaces */
+  .prose a { 
+    @apply text-blue-400 hover:text-blue-300 transition-colors duration-200
+           underline decoration-2 underline-offset-2; 
+  }
+
+  /* Listas */
+  .prose ul, .prose ol { 
+    @apply my-6 ml-6 space-y-2; 
+  }
+
+  .prose li { 
+    @apply text-gray-300 text-base md:text-lg; 
+  }
+
+  /* Bloques de código */
+  .prose pre { 
+    @apply bg-gray-800 p-4 rounded-lg overflow-x-auto my-6
+           border border-gray-700 shadow-inner; 
+  }
+
+  .prose code { 
+    @apply bg-gray-800 text-gray-200 px-1.5 py-0.5 rounded
+           text-sm md:text-base font-mono; 
+  }
+
+  /* Citas */
+  .prose blockquote { 
+    @apply border-l-4 border-blue-500 pl-4 my-6
+           italic text-gray-400 bg-gray-800/50 p-4 rounded-r-lg; 
+  }
+
+  /* Tablas */
+  .prose table { 
+    @apply w-full my-6 overflow-x-auto block md:table
+           border-collapse border border-gray-700; 
+  }
+
+  .prose th { 
+    @apply bg-gray-800 text-gray-300 p-3 text-left font-semibold
+           border border-gray-700; 
+  }
+
+  .prose td { 
+    @apply p-3 border border-gray-700 text-gray-300; 
+  }
+
+  /* Efectos hover */
+  .prose h2:hover, 
+  .prose h3:hover { 
+    @apply text-blue-400 transition-colors duration-200; 
+  }
+
+  /* Responsive containers */
+  @media (max-width: 768px) {
+    .prose {
+      @apply px-4;
     }
-  </style>
+    
+    .prose img {
+      @apply w-full;
+    }
+  }
+</style>
 

@@ -26,11 +26,11 @@ const { title } = Astro.props;
       <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <Logo src="/img/logo.png" alt="mi logo"></Logo>
         <nav class="hidden md:flex space-x-4">
-          <a href="/" class="hover:text-gray-300 transition-colors link-hover">Inicio</a>
-          <a href="/projects" class="hover:text-gray-300 transition-colors">Proyectos</a>
-          <a href="/about" class="hover:text-gray-300 transition-colors">Sobre mi</a>
-          <a href="/services" class="hover:text-gray-300 transition-colors">Servicios</a>
-          <a href="/contact" class="hover:text-gray-300 transition-colors">Contactame</a>
+          <a href="/" class="nav-link">Inicio</a>
+          <a href="/projects" class="nav-link">Proyectos</a>
+          <a href="/about" class="nav-link">Sobre mi</a>
+          <a href="/services" class="nav-link">Servicios</a>
+          <a href="/contact" class="nav-link">Contactame</a>
         </nav>
         <button id="mobile-menu-button" class="md:hidden text-gray-100">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -97,5 +97,39 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
-  
+  .nav-link {
+    @apply px-4 py-2 rounded-md transition-all duration-300 ease-in-out;
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+  }
+
+  .nav-link:hover {
+    @apply bg-blue-600;
+    transform: scale(1.1);
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: left 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::before {
+    left: 100%;
+  }
+
+  /* Actualizar también los enlaces del menú móvil */
+  #mobile-menu a {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  #mobile-menu a:hover {
+    @apply bg-blue-600 scale-105 px-4;
+  }
 </style>

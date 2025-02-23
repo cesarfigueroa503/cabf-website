@@ -17,14 +17,16 @@ interface Project {
   };
 }
 
-const projects: Project[] = await getCollection('projects');
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects.slice(0, 3); // Tomar solo los primeros 3 proyectos
 ---
 
 <Layout title="Portafolio de Cesar Banegas">
 
 	<main class="bg-fixed bg-cover bg-center">
 		<div > <!-- Oscurece la imagen de fondo con unn overlay -->
-			<h1 class="text-5xl font-bold text-stone-50 mb-8 text-center ">Bienvenido a Mi Portafolio</h1>
+			<h1 class="text-5xl font-bold text-stone-50 mb-8 text-center ">Cesar Banegas - Desarrollador de software</h1>
+			<h2 class="text-3xl font-bold text-stone-500 mb-8 text-center ">Bienvenido a mi Portafolio</h2>
 			<p class="text-lg text-gray-300 mb-8 text-center ml-10 mr-10">
 				Soy desarrollador backend apasionado por crear soluciones eficientes. Aquí puedes encontrar mis habilidades, proyectos y aficiones.
 			</p>
@@ -41,7 +43,7 @@ const projects: Project[] = await getCollection('projects');
 			<TextBlock
 			  title="Objetivos 🎯"
 			  content="A corto plazo, quiero mejorar mis habilidades en computación en la nube y patrones de diseño. A largo plazo, aspiro a ser un desarrollador full-stack y colaborar con grandes empresas tecnológicas."
-			  alignment="center"
+			  alignment="right"
 			  titleSize="medium"
 			  imageUrl='img/init002.jpg'
 			  imagePosition='left'
@@ -51,15 +53,164 @@ const projects: Project[] = await getCollection('projects');
 			<TextBlock
 			  title="Pasiones y Entusiasmos 🎨"
 			  content="Me apasiona el desarrollo de aplicaciones web y la extracción de datos para entrenar modelos de predicción. Estoy entusiasmado por la posibilidad de crear soluciones innovadoras que resuelvan problemas reales y mejoren la vida de las personas."
-			  alignment="center"
+			  alignment="left"
 			  titleSize="medium"
 			  imageUrl='img/init003.jpg'
 			  imagePosition='right'
 			/>
 			<br>
+
+			<!-- Sección de Proyectos Destacados -->
+			<section class="mt-16 mb-16">
+				<h2 class="text-4xl font-bold text-white mb-8 text-center">Proyectos Destacados</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+					{
+						featuredProjects.map((project) => (
+							<Card
+								title={`${project.data.title} ${project.data.icon}`}
+								description={project.data.description}
+								imageUrl={`/img/${project.data.imageUrl}`}
+								link={`/projects/${project.slug}`}
+							/>
+						))
+					}
+				</div>
+
+				<div class="text-center mt-8">
+					<a 
+						href="/projects" 
+						class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+					>
+						Ver todos los proyectos
+					</a>
+				</div>
+			</section>
+
+			<!-- Servicios Destacados -->
+			<section class="mt-16 mb-16">
+				<h2 class="text-4xl font-bold text-white mb-8 text-center">Servicios Destacados</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+					<!-- Backend Development -->
+					<div class="bg-slate-800 p-6 rounded-lg transform hover:scale-105 transition-all duration-300">
+						<h3 class="text-xl font-bold mb-3 text-blue-400">💻 Desarrollo Backend</h3>
+						<p class="text-gray-300 mb-4">Desarrollo de APIs, microservicios y sistemas robustos utilizando Python, Java y Node.js. Implementación de lógica de negocio y optimización de rendimiento.</p>
+					</div>
+
+					<!-- Database Administration -->
+					<div class="bg-slate-800 p-6 rounded-lg transform hover:scale-105 transition-all duration-300">
+						<h3 class="text-xl font-bold mb-3 text-blue-400">🗄️ Administración de Bases de Datos</h3>
+						<p class="text-gray-300 mb-4">Diseño, implementación y optimización de bases de datos SQL y NoSQL. Gestión de datos, respaldos y seguridad de la información.</p>
+					</div>
+
+					<!-- Technical Consulting -->
+					<div class="bg-slate-800 p-6 rounded-lg transform hover:scale-105 transition-all duration-300">
+						<h3 class="text-xl font-bold mb-3 text-blue-400">🤝 Consultoría Tecnológica</h3>
+						<p class="text-gray-300 mb-4">Asesoramiento en arquitectura de software, mejores prácticas de desarrollo y soluciones tecnológicas para optimizar tus procesos de negocio.</p>
+					</div>
+				</div>
+
+				<div class="text-center mt-8">
+					<a 
+						href="/services" 
+						class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+					>
+						Ver todos los servicios
+					</a>
+				</div>
+			</section>
+
 			<h2 class="text-4xl font-bold text-white mb-8 text-center">
 				Tecnologías</h2>
 			
+			<!-- Sección de Tecnologías -->
+			<div class="container mx-auto px-4 mb-16">
+				<!-- Backend -->
+				<div class="mb-12">
+					<h3 class="text-2xl font-semibold text-gray-300 mb-6 text-center">Backend</h3>
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/python.svg" alt="Python" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">Python</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/java.svg" alt="Java" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">Java</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/spring.svg" alt="Spring" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">Spring Boot</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/django.png" alt="Django" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">Django</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Frontend -->
+				<div class="mb-12">
+					<h3 class="text-2xl font-semibold text-gray-300 mb-6 text-center">Frontend</h3>
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/html5.svg" alt="HTML5" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">HTML5</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/css3.svg" alt="CSS3" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">CSS3</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/javascript.svg" alt="JavaScript" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">JavaScript</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/typescript.svg" alt="TypeScript" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">TypeScript</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Bases de Datos -->
+				<div class="mb-12">
+					<h3 class="text-2xl font-semibold text-gray-300 mb-6 text-center">Bases de Datos</h3>
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/postgresql.svg" alt="PostgreSQL" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">PostgreSQL</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/sql-server.svg" alt="SQL Server" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">SQL Server</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/mongodb.svg" alt="MongoDB" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">MongoDB</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/oracle.svg" alt="Oracle" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">Oracle</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Herramientas y Otros -->
+				<div>
+					<h3 class="text-2xl font-semibold text-gray-300 mb-6 text-center">Herramientas y Otros</h3>
+					<div class="grid grid-cols-2 md:grid-cols-2 gap-6 ">
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/git.svg" alt="Git" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">Git</p>
+						</div>
+						<div class="bg-slate-800 p-4 rounded-lg text-center hover:bg-slate-700 transition-colors">
+							<img src="/icons/linux.svg" alt="Linux" class="w-16 h-16 mx-auto mb-2">
+							<p class="text-gray-300">Linux</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
 
 			
 		</div>
